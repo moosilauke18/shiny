@@ -244,8 +244,9 @@ decodeMessage <- function(data) {
 
   if (readInt(1) != 0x01020202L) {
     # use native encoding for the message
-    nativeData <- iconv(rawToChar(data), 'UTF-8')
-    return(fromJSON(nativeData, asText=TRUE, simplify=FALSE))
+    #nativeData <- iconv(rawToChar(data), 'UTF-8')
+    #return(fromJSON(nativeData, asText=TRUE, simplify=FALSE))
+    return(fromJSON(rawToChar(data), asText=TRUE, simplify=FALSE, encoding='UTF-8'))
   }
 
   i <- 5
